@@ -1,11 +1,10 @@
-import dotenv from "dotenv";
-dotenv.config();
 import { MongoClient, ServerApiVersion } from "mongodb";
+import { env } from "./environment.js";
 
 // Khởi tạo một đối client để connect tới MongoDB
 let trelloDatabaseInstance = null;
 
-const client = new MongoClient(process.env.MONGODB_URL, {
+const client = new MongoClient(env.MONGODB_URL, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,

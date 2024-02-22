@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 import express from "express";
-import { CLOSE_DB, CONNECT_DB } from "./config/mongodb.js";
 import exitHook from "async-exit-hook";
+import { env } from "./config/environment.js";
+import { CLOSE_DB, CONNECT_DB } from "./config/mongodb.js";
 
 const START_SERVER = () => {
   const app = express();
@@ -10,8 +11,8 @@ const START_SERVER = () => {
     res.send("<h1>Hello World!</h1>");
   });
 
-  app.listen(() => {
-    console.log("Server is running at http://localhost:8000/");
+  app.listen(env.PORT, env.APP_HOST, () => {
+    console.log(`Server is running at http://${env.APP_HOST}:${env.PORT}/`);
   });
 
   exitHook(() => {
