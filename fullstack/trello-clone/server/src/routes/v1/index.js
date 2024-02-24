@@ -10,6 +10,6 @@ Router.get("/", (req, res) => {
 });
 
 // Board APIs
-Router.use("/board", boardRoute);
+Router.use("/boards", boardRoute);
 
 export const APIs_V1 = Router;
